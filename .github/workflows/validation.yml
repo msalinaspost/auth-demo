@@ -31,8 +31,10 @@ jobs:
         # registry-url: # optional
         # Optional scope for authenticating against scoped registries
         # scope: # optional
+    
+    - name: Install App
+      run: npm i
 
-    # Runs a single command using the runners shell
     - name: Unit Test
       run: npm test
 
