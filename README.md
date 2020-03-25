@@ -4,7 +4,7 @@
 
 The console react application will use AWS Cognito to authenticate and authorize different business users. The following diagram shows an end-to-end experience for a first-time or recently visiting user.
 
-![alt auth flow diagram](./images/auth.jpg)
+![alt auth flow diagram](./images/Auth.jpg)
 
 1. The user navigates to the console web page by entering in the URL in the browser.
 2. In the react application, the app will look for an access token, if the access token exists it can skip to step 6 to authenticate immediately with the API. If there is no access token present, the app will redirect to the sign-in/sign-up page. At this moment, we can either use the self-hosted UI offered by Cognito or build our own. In this demo, we will build our own using AWS Amplify. It must be noted that this design decision is yet to be finalized.
@@ -25,7 +25,7 @@ This solution requires additional logic to handle the user refreshing the page a
 
 Cognito manages user profiles using a User Pool. This pool can be organized using User Groups. We will have two groups: SuperAdmin and Customer to distinguish between a developer and a business user. We will also add a custom attribute to the User Profile model to distinguish between businesses, for now this will be called `organization`.
 
-![alt user pool diagram](./images/userpool.jpg)
+![alt user pool diagram](./images/UserPool.jpg)
 
 By organizing the user pool in this manner we are able to have checks in place at the API Gateway level (using authentication lambdas) and not within the backend application. So, for example, if the API supported an endpoint meant to be accessed only for our Super Users, the backend application will not have to handle this because the request will never make it's way past API gateway.
 
